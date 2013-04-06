@@ -1,0 +1,103 @@
+#include <stdio.h>
+#include <math.h>
+#include <time.h>
+/*int my_random()
+  {
+  return(rand()%(9+10)-9);
+  }*/
+
+void	nbr(int a, int tab[])
+{
+	int i;
+
+	i = 0;
+	while ( i < a)
+	{
+		tab[i] = rand()%(9+10)-9;
+		printf("%d\t", tab[i]);
+		i++;
+	}
+}
+
+int somme(int a, int tabA[], int tabB[], int tabAB[])
+{
+	int i = 0;
+	while (i < a)
+	{
+		tabAB[i] = tabA[i]+tabB[i];
+		printf ("%d\t ", tabAB[i]); 
+		i++;
+	}
+}
+
+int multi(int a, int tab1[], int tab2[])
+{
+	int i = 0;
+	while (i < a)
+	{
+		printf ("%d\t ", (tab1[i]*tab2[i])); 
+		i++;
+	}
+}
+
+int scal(int a, int tab1[], int tab2[])
+{
+	int i = 0, b = 0;
+	while (i < a)
+	{
+		b +=  (tab1[i]*tab2[i]); 
+		i++;
+	}
+	return (b);
+}
+
+int norme(int a, int tabAB[])
+{
+	int i = 0, b = 0;
+	while (i < a)
+	{
+		b += pow(tabAB[i], 2); 
+		i++;
+	}
+	return (b);
+}
+
+int main(int ac, char **av)
+{
+	srand(time(NULL));
+	int i = 0, tabA[atoi(av[2])], tabB[atoi(av[2])] , tabAB[atoi(av[2])];
+
+	printf("Vecteur A\t");  
+	nbr(atoi(av[2]), tabA);
+	printf("\n");
+	printf("Vecteur B\t");
+	nbr(atoi(av[2]), tabB);
+	printf("\n");
+
+	if(atoi(av[1]) == 1)
+	{
+		printf("Vecteur A+B\t");
+		somme(atoi(av[2]), tabA, tabB, tabAB);
+	}
+	else if(atoi(av[1]) == 2)
+	{
+		printf("Vecteur A+B\t");
+		multi(atoi(av[2]), tabA, tabB);
+	}
+	else if(atoi(av[1]) == 3)
+	{
+		printf("Vecteur A.B\t");
+		printf("%d", scal(atoi(av[2]), tabA, tabB));
+	}
+	else if(atoi(av[1]) == 4)
+	{
+		printf("Norme euclidienne A.B\t");
+		somme(atoi(av[2]), tabA, tabB, tabAB);
+		printf("\n");
+		printf("%d", norme(atoi(av[2]), tabAB));
+	}
+	printf("\n");
+
+
+}
+
